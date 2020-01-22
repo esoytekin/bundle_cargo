@@ -1,0 +1,70 @@
+swagger: '2.0'
+info:
+  title: Bundle Cargo Api
+  version: 1.0.0
+  description: Shipping cost api for sales
+  contact:
+    email: emrahsoytekin@gmail.com
+host: cargo.bundle.com
+basePath: /cargo-api
+schemes:
+  - http
+
+paths:
+  /sale/{saleId}/shipping:
+    get:
+      summary: get shipping costs for sale
+      tags:
+        - sale
+      operationId: getShippingCostBySale
+      produces:
+        - application/json
+      parameters:
+        - name: saleId
+          in: path
+          type: integer
+          format: int64
+          required: true
+          description: numeric id of the sale item
+      responses:
+        200:
+          description: successful operation. returns contracts of the team for that year.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ShippingResponse'
+        500:
+          description: Internal Server Error
+
+definitions:
+
+  ShippingResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        description: shipping status
+      sale:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+            description: numeric id of the sale item
+          code:
+            type: string
+            description: unique id for the sale item
+      product:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+            description: numeric id of the product item
+          name:
+            type: string
+            description: name of the product item
+          price:
+            type: number
+            format: double
+            description: price of the product item

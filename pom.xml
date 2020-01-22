@@ -61,6 +61,42 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
+      <plugin>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger.codegen.version}</version>
+        <executions>
+          <execution>
+            <id>generate-java-api-v1</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/swagger/bundle-api-service.yaml</inputSpec>
+              <modelPackage>org.swagger.bundleapi.rest.v1.model</modelPackage>
+              <apiPackage>org.swagger.bundleapi.rest.v1</apiPackage>
+              <verbose>false</verbose>
+              <configHelp>false</configHelp>
+              <language>spring</language>
+              <generateApiDocumentation>false</generateApiDocumentation>
+              <generateApis>true</generateApis>
+              <generateModels>true</generateModels>
+              <generateSupportingFiles>false</generateSupportingFiles>
+              <configOptions>
+                <useBeanValidation>true</useBeanValidation>
+                <java8>true</java8>
+                <async>true</async>
+                <interfaceOnly>true</interfaceOnly>
+                <dateLibrary>java8</dateLibrary>
+                <delegatePattern>false</delegatePattern>
+                <useTags>true</useTags>
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
