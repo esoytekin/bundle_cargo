@@ -9,6 +9,18 @@
     <relativePath/>
   </parent>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <groupId>com.bundle.cargo</groupId>
   <artifactId>bundle-cargo</artifactId>
   <packaging>jar</packaging>
@@ -18,6 +30,7 @@
       <java.version>8</java.version>
       <swagger-annotations.version>1.5.22</swagger-annotations.version>
       <swagger.codegen.version>2.4.6</swagger.codegen.version>
+      <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     </properties>
 
   <dependencies>
@@ -51,6 +64,17 @@
       <groupId>io.swagger</groupId>
       <artifactId>swagger-annotations</artifactId>
       <version>${swagger-annotations.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
     </dependency>
 
   </dependencies>

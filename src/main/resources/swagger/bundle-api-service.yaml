@@ -13,10 +13,10 @@ schemes:
 paths:
   /sale/{saleId}/shipping:
     get:
-      summary: get shipping costs for sale
+      summary: get shipping status for sale
       tags:
         - sale
-      operationId: getShippingCostBySale
+      operationId: getShippingStatusBySale
       produces:
         - application/json
       parameters:
@@ -30,15 +30,13 @@ paths:
         200:
           description: successful operation. returns contracts of the team for that year.
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ShippingResponse'
+              $ref: '#/definitions/ShippingStatusResponse'
         500:
           description: Internal Server Error
 
 definitions:
 
-  ShippingResponse:
+  ShippingStatusResponse:
     type: object
     properties:
       status:
