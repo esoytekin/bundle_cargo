@@ -54,3 +54,10 @@ Response:
     } 
 }
 ```
+
+
+Dockerize:
+```
+docker build -t cargo-server .
+docker run --name=cargo-server --publish=8888:8080 cargo-server
+```
